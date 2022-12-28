@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Canvas</title>
+	<script type="text/javascript" src="retangulo.js">	</script>
+</head>
+<body>
+	<canvas id="retangulo" width="200" height="200"></canvas>
+	<canvas id="estrela" width="300" height="300"></canvas>
+	<canvas id="circulo" width="300" height="300"></canvas>
+
+	<script type="text/javascript">
+		//script para desenhar retangulos diversos
+		//Referenciando o canvas
+		var canvas = document.getElementById('retangulo')
+		//obtendo o contexto grafico
+		var context = canvas.getContext('2d')
+		//retangulo com prenchemento
+		context.fillRect(0, 0, 100, 100 );
+		//Restangulo sem preenchimento
+		context.strokeRect(0, 100, 100, 100);
+		//Retangulo com preenchimento vermelho
+		context.fillStyle = 'red'
+		context.fillRect(100, 0, 100, 100);
+		//retangulo com contornno azul, e borda de 3px
+		context.lineWidth = 3;
+		context.strokeStyle = 'blue';		
+		context.strokeRect(100, 100, 100, 100);
+	</script>
+
+	<script type="text/javascript">
+		//escript para desenhar uma estrela
+		//Referenciando o canvas
+		var canvas2 = document.getElementById('estrela');
+		var context = canvas2.getContext('2d');
+		//Iniciar o caminho (apaga desenhos anterioris)
+		context.beginPath();
+		//coodenadas para desenhar uma estrela
+		context.moveTo(70, 250);
+		context.lineTo(150, 50);
+		context.lineTo(225, 250);
+		context.lineTo(50, 120);
+		context.lineTo(250, 120);
+		context.lineTo(75, 250);
+		//configuração de espesura e cor da linha
+		context.lineWidh = 2;
+		context.strokeStyle = 'red';
+		//função traçar as linha para motrar o desenho
+		context.stroke();
+	</script>
+	<script type="text/javascript">
+		//canvas e contexto
+		var canvas = document.getElementById('circulo');
+		var context = canvas.getContext('2d');
+		//cores e espesura da linha
+		context.fillStyle = 'grey';
+		context.strokeStyle = 'black';
+		context.lineWidh = 2;	
+		//novo path e primeiro arco
+		context.beginPath();
+		//coodenadas para desenhar o circulo
+		context.arc(
+			50,				//Codenada x (centro )
+			50,				//Codenada y (centro )
+			40,				//Raio
+			90*Math.PI/180,	//Inicio em 90 graus
+			270*Math.PI/180,//Fim em 270 graus
+			false			//Sentido anti-horario
+			);
+		context.fill();
+		context.stroke();
+		//segundo arco.
+		context.beginPath();
+		context.arc(
+			100,
+			50,
+			40,
+			90*Math.PI/180,
+			270*Math.PI/180,
+			true
+			);
+		context.fill();
+		context.stroke();
+		//circulo completo
+		context.beginPath();
+		context.arc(
+			250,
+			50,
+			40,
+			0,
+			2*Math.PI
+			);
+		context.fill();
+		context.stroke();
+	</script>
+
+</body>
+</html>
